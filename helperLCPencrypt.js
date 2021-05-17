@@ -1,8 +1,6 @@
 require('dotenv').config()
-//require('dotenv').config({ path: `.env.${process.env.NODE_ENV}` })
 
 const { spawn } = require('child_process');
-//var sync = require('child_process').spawnSync;
 
 module.exports =  {
 
@@ -19,7 +17,6 @@ module.exports =  {
             
             const ret = lcpencrypt.stdout.on('data', (data) => {
                 
-                //console.log(`${data}`)
                 const stdOutput = `${data}`
                 jsonPart = stdOutput.substring(
                     stdOutput.lastIndexOf("{"), 
