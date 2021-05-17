@@ -1,12 +1,11 @@
 //Module handles all communications with Elasticsearch backend
 require('dotenv').config()
-//require('dotenv').config({ path: `.env.${process.env.NODE_ENV}` })
 
 require('array.prototype.flatmap').shim()
 const { Client } = require('@elastic/elasticsearch')
 const client = new Client({
   auth: {username: 'elastic', password: process.env.ESPWD},
-  cloud: {id: 'i-o-optimized-deployment:ZXUtY2VudHJhbC0xLmF3cy5jbG91ZC5lcy5pbyQwZTc2NjJlY2IzMzQ0MTllYWQ4MDQyM2E0NzgyMDZlOSQ3MTA3OThiMzU5Nzg0OGVjYjZiNTFkMjU2MmMwMmI0Zg=='}
+  cloud: {id: process.env.ESID}
 })
 
 const publicationIndexName  = process.env.ES_PUBLICATION_INDEX_NAME
@@ -65,7 +64,6 @@ module.exports =  {
             query.bool.must.push({ match: { 'content-id': contentid } })
             console.log(query)
             const sort = [{'mainEntity.datePublished': {order : 'desc'}}]
-            //const _source = {"excludes": ["desc", "descHTML"]}
             const _source = ["mesmainEntitysage"]
           
             const { body } = await client.search({ index: publicationIndexName, body: { size: 1, sort, query  } })
