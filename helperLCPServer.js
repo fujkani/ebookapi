@@ -1,6 +1,5 @@
 //Module handles REST calls to LCP Server
 require('dotenv').config()
-//require('dotenv').config({ path: `.env.${process.env.NODE_ENV}` })
 
 //import axios from "axios";
 const axios = require('axios'); 
@@ -11,20 +10,19 @@ require('array.prototype.flatmap').shim()
 const { Client } = require('@elastic/elasticsearch')
 const client = new Client({
   auth: {username: 'elastic', password: process.env.ESPWD},
-  cloud: {id: 'i-o-optimized-deployment:ZXUtY2VudHJhbC0xLmF3cy5jbG91ZC5lcy5pbyQwZTc2NjJlY2IzMzQ0MTllYWQ4MDQyM2E0NzgyMDZlOSQ3MTA3OThiMzU5Nzg0OGVjYjZiNTFkMjU2MmMwMmI0Zg=='}
+  cloud: {id: process.env.ESID}
 })
 
 module.exports =  {
 
     //Insert a publication LCP Server
-    //TODO: need to return values and handle errors
 
     storePublicationAsync: async function(LCPEncryptJSON) {return await module.exports.storePublication(LCPEncryptJSON);},
 
     storePublication: function(LCPEncryptJSON){
         return new Promise((resolve, reject) => {
           try {
-            const res = axios.put( process.env.LCP_SERVER_URL + '/contents/' + LCPEncryptJSON['content-id'], LCPEncryptJSON, {  //secure-test
+            const res = axios.put( process.env.LCP_SERVER_URL + '/contents/' + LCPEncryptJSON['content-id'], LCPEncryptJSON, {  
               headers: {
                 'Content-Type': 'application/json'
               },
