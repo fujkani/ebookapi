@@ -1,0 +1,39 @@
+{
+  "name": "rest-api",
+  "version": "1.0.0",
+  "description": "Simple Node REST API w/ OAuth 2.0 Client Credentials",
+  "main": "index.js",
+  "scripts": {
+    "start": "node .",
+    "test": "standard"
+  },
+  "author": "",
+  "license": "Apache 2.0",
+  "dependencies": {
+    "@elastic/elasticsearch": "^7.11.0",
+    "@okta/jwt-verifier": "0.0.12",
+    "@sentry/node": "^6.2.1",
+    "@sentry/tracing": "^6.2.1",
+    "array.prototype.flatmap": "^1.2.4",
+    "axios": "^0.21.1",
+    "body-parser": "^1.18.3",
+    "btoa": "^1.2.1",
+    "cors": "^2.8.5",
+    "dotenv": "^6.0.0",
+    "epilogue": "^0.7.1",
+    "epub2": "^2.0.4",
+    "express": "^4.16.3",
+    "express-fileupload": "^1.2.1",
+    "lodash": "^4.17.10",
+    "log4js": "^6.3.0",
+    "morgan": "^1.10.0",
+    "request-promise": "^4.2.2",
+    "sequelize": "^4.38.0",
+    "util": "^0.11.0",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "electron-rebuild": "^2.3.5",
+    "standard": "^11.0.1"
+  }
+}
