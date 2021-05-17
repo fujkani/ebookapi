@@ -1,4 +1,4 @@
-# ISMAIL REST API with Node and OAuth 2.0
+# eBook REST API with Node and OAuth 2.0
 
 This API handles secure requests for Book Publishers and eStore alike
 
@@ -37,9 +37,3 @@ To run the server, run `npm start` from the terminal.
 
 To make secure API requests, you'll need to authenticate the user with Okta to get a jwt token (make sure scope includes scope=openid profile email bookclubscope)
 
-**USAGE**
-
-
-## License
-
-Apache 2.0, see [LICENSE](LICENSE).
