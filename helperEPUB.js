@@ -1,6 +1,5 @@
 //Module handles all communications with Elasticsearch backend
 require('dotenv').config()
-//require('dotenv').config({ path: `.env.${process.env.NODE_ENV}` })
 
 var fs = require('fs')
 const EPub = require("epub2/node");
@@ -24,7 +23,7 @@ module.exports =  {
                 const logger = log4js.getLogger("cheese");
 
                 //test opening ePub and listing some of the metadata
-                let inFile = inputFile //'/Users/fatjonujkani/EBOOKS/epub/3d06922d-7d56-4916-8193-c15386cc2585.epub' //
+                let inFile = inputFile
                 let imagewebroot = '/images/'
                 let chapterwebroot = '/chapter/'
                 
@@ -36,7 +35,6 @@ module.exports =  {
                     logger.info(epub)
                     
                     if (epub.metadata.description) {console.log('CHANGING ABOUT');pubInfoJSON['mainEntity']['about'] = epub.metadata.description}
-                    //if (epub.metadata.creator) {console.log('CHANGING');pubInfoJSON['mainEntity']['author'] = epub.metadata.creator}
                     if (epub.metadata.publisher) {console.log('CHANGING PUBLISHER'); pubInfoJSON['mainEntity']['publisher'] = epub.metadata.publisher}
                     if (epub.metadata.date) {console.log('CHANGING DatePublished'); pubInfoJSON['mainEntity']['datePublished'] = epub.metadata.date}
                     if (epub.metadata.language) {console.log('CHANGING inLanguage'); pubInfoJSON['mainEntity']['inLanguage'] = epub.metadata.language}
