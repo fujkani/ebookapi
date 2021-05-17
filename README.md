@@ -1,7 +1,8 @@
 # eBook REST API with Node Express, Okta Authentication, ErdLab DRM
 
-This API handles secure requests for Book Publishers and eStore alike. It uses open source DRM technology from ErdLab, https://www.edrlab.org/
+This Sample API handles secure requests for Book Publishers and eStore alike. It uses open source DRM technology from ErdLab, https://www.edrlab.org/
 
+It's using Okta authentication the secure the endpoints and as such requires an account with Okta from a dev authentication server I have put together under: https://dev-998545.okta.com/
 
 For Book Publishers:
 
