@@ -105,8 +105,6 @@ module.exports =  {
                     type: 'license',
                     body: publicationLicenseJSON
                 }, function(err, resp, status) {
-                    //TODO: check err before replying
-                    //TODO: exit gracefully in case of errors: return a {status: 500, error: err} back to client
                     console.log(resp);
                     resolve(resp)
                 });
