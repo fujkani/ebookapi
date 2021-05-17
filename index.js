@@ -1,11 +1,11 @@
 //Entry point index.js
 //Exposes main REST endpoints
 
-require('dotenv').config()
-const express = require('express')
+require('dotenv').config();
+const express = require('express');
 const fileUpload = require('express-fileupload');
-const bodyParser = require('body-parser')
-const { promisify } = require('util')
+const bodyParser = require('body-parser');
+const { promisify } = require('util');
 
 const cors = require('cors');
 const morgan = require('morgan');
@@ -14,18 +14,18 @@ const { v4: uuidv4 } = require('uuid');
 var crypto = require('crypto');
 
 
-const authMiddleware = require('./auth')
-const helperLCPencrypt = require('./helperLCPencrypt')
-const helperES = require('./helperES')
-const helperLCPServer = require('./helperLCPServer')
-const helperEPUB = require('./helperEPUB')
+const authMiddleware = require('./auth');
+const helperLCPencrypt = require('./helperLCPencrypt');
+const helperES = require('./helperES');
+const helperLCPServer = require('./helperLCPServer');
+const helperEPUB = require('./helperEPUB');
 
 const Sentry =  require("@sentry/node");
 const Tracing = require("@sentry/tracing");
-const SENTRY_DSN = process.env(SENTRY_DSN)
+const SENTRY_DSN = process.env.SENTRY_DSN;
 
 
-const app = express()
+const app = express();
 
 Sentry.init({
   dsn: SENTRY_DSN,
@@ -190,11 +190,6 @@ app.post('/publisher/contents/uploadepub', async (req, res) => {
   } catch (err) {
       console.log("ERROR999: " + err)
       res.status(500).send(err);
-      /*res.send({
-        status: 500,
-        message: 'Error occured',
-        data: err
-    });*/
   }
 });
 
@@ -213,7 +208,6 @@ app.post('/publisher/contents/test', async (req, res) => {
         //Using name of the input field to retrieve the uploaded file
         let publicationFile = req.files.publication;
 
-        //console.log(req.body.publicationinfo);
         const contentid = uuidv4()
         const fileName = contentid + '.epub';
         const baseUploadFolder = process.env.UPLOAD_FOLDER
@@ -251,8 +245,6 @@ app.post('/publisher/contents/test', async (req, res) => {
 
         })
 
-
-
         res.send({
           status: true
         });
@@ -262,7 +254,6 @@ app.post('/publisher/contents/test', async (req, res) => {
 
 
   } catch (err) {
-      //res.status(500).send(err);
       res.send({
         status: 500,
         message: 'Error occured',
