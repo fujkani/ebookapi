@@ -1,10 +1,7 @@
 //Entry point index.js
 //Exposes main REST endpoints
-//TODO: Would be good to split the endpoints in a separate endpoints.js file and maybe attache swagger-autogen for documentation: https://medium.com/swlh/automatic-api-documentation-in-node-js-using-swagger-dd1ab3c78284
-
 
 require('dotenv').config()
-//require('dotenv').config({ path: `.env.${process.env.NODE_ENV}` })
 const express = require('express')
 const fileUpload = require('express-fileupload');
 const bodyParser = require('body-parser')
@@ -25,7 +22,7 @@ const helperEPUB = require('./helperEPUB')
 
 const Sentry =  require("@sentry/node");
 const Tracing = require("@sentry/tracing");
-const SENTRY_DSN = "https://27cf3d8bc3d94b2289c2a4942208f842@o514427.ingest.sentry.io/5669691"
+const SENTRY_DSN = process.env(SENTRY_DSN)
 
 
 const app = express()
@@ -277,9 +274,6 @@ app.post('/publisher/contents/test', async (req, res) => {
 
 //#region eStore endpoints
 
-//TODO: eventually will need to secure this endpoint so only another API can call it. Most likely splitting into a separate API/listener would be a better design
-//TODO: validate schema
-//TODO: validate requested license rights jive with what's on ES for this publication..
 app.post('/estore/contents/generatelicense', async (req, res) => {
   var ret = 'abc'
   console.log(ret)
@@ -304,22 +298,6 @@ app.post('/estore/contents/generatelicense', async (req, res) => {
       let licenseRequestInfoJSON = JSON.parse(req.body.licenserequestinfo)
 
       let contentid = req.body.contentid
-
-
-      //assuming input is validated..
-      //lookup ES entry for this publication
-      //not sure we need to query ES
-      /*
-      publicationInfoJSON = await helperES.getPublicationByContentIdAsync(contentid)
-      .then( res => {
-        console.log('Retrieved ES publication')
-        console.log(res)
-      })
-      .catch(err => {
-        console.log('Get ES Publication failed')
-        console.error(err)
-      });
-      */
 
       const secret = licenseRequestInfoJSON['encryption']['user_key']['hex_value'];
       const hash = crypto.createHmac('sha256', secret)
