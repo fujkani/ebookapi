@@ -13,6 +13,18 @@ For eStore:
 
 * CRUD ops for Book licenses
 
+## Patterns and Best Practices covered
+
+1. Securing your API using Okta middleware for Node Express
+2. Enabling File Upload in your API
+3. Automating DRM activities with backend ErdLab servers
+4. CRUD operations with Elasticsearch
+5. Using sentry.io for logging
+6. Handling ePub formats
+7. and others
+
+
+
 ## Author
 
 Jon Ujkani
