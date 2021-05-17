@@ -24,6 +24,13 @@ For eStore:
 7. and others
 
 
+## Assumes
+
+- Familiarity with setting up Okta and understanding authentication mechanisms such as jwt tokens
+- Familiarity with Node Express
+- Familiarity with ErdLab DRM licensing technology
+- Good understanding of Elasticsearch CRUD operations and node Client
+
 
 ## Author
 
