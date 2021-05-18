@@ -1,0 +1,97 @@
+curl - location - request POST 'http://127.0.0.1:3000/publisher/contents/uploadepub' \
+ - header 'Authorization: Bearer 'your token here'' \
+ - form 'publication=@"/Users/user1/EBOOKS/The-Creation-of-God.epub"' \
+ - form 'publicationinfo="{
+ \"@context\": \"https://schema.org\",
+ \"@type\": \"WebPage\",
+ \"breadcrumb\": \"Books > Fiction > JSON\",
+ \"mainEntity\": {
+ \"@type\": \"Book\",
+ \"about\": \"Count Dracula kicks off the coffin lid again in this updated vampire tale, ready to stalk through the rubble of post-Communist Europe\",
+ \"author\": [
+ {
+ \"@id\": \"https://en.wikipedia.org/wiki/dan_simons\",
+ \"@type\": \"Person\",
+ \"name\": \"Dan Simmons\"
+ }
+ ],
+ \"translator\": [
+ {
+ \"@type\": \"Person\",
+ \"name\": \"Ian Smith\"
+ }
+ ],
+ \"workTranslation\": {
+ \"@type\": \"Book\",
+ \"@id\": \"http://worldcat.org/entity/work/id/460646\"
+ },
+ \"bookFormat\": \"http://schema.org/EBook\",
+ \"datePublished\": \"2016–05–01\",
+ \"image\": \"coverImage.jpg\",
+ \"inLanguage\": \"en\",
+ \"isbn\": \"978–0–399–13717–4\",
+ \"name\": \"Children of the Night\",
+ \"numberOfPages\": \"400\",
+ \"publisher\": \"Putnam Publishing Group\",
+ \"licensingRights\": {
+ \"canPrint\": true,
+ \"maxPrintPages\": 1,
+ \"canCopy\": true,
+ \"maxCopyChars\": 1000,
+ \"expectsAcceptanceOf\": [
+ {
+ \"@type\": \"Offer\",
+ \"category\": \"purchase\",
+ \"Price\": 17.99,
+ \"priceCurrency\": \"USD\",
+ \"availabilityStarts\": \"2020–01–01T11:0:00–04:00\",
+ \"availabilityEnds\": \"2050–06–30T23:59:00–04:00\",
+ \"eligibleRegion\": [
+ {
+ \"@type\": \"Country\",
+ \"name\": \"UK\"
+ }
+ ]
+ },
+ {
+ \"@type\": \"Borrow\",
+ \"category\": \"borrow\",
+ \"range\": [
+ {
+ \"@type\": \"day\",
+ \"number\": 15,
+ \"Price\": 2.99
+ },
+ {
+ \"@type\": \"week\",
+ \"number\": 4,
+ \"Price\": 4.99
+ },
+ {
+ \"@type\": \"month\",
+ \"number\": 2,
+ \"Price\": 9.99
+ }
+ ],
+ \"priceCurrency\": \"USD\",
+ \"availabilityStarts\": \"2020–01–01T11:0:00–04:00\",
+ \"availabilityEnds\": \"2050–06–30T23:59:00–04:00\",
+ \"eligibleRegion\": [
+ {
+ \"@type\": \"Country\",
+ \"name\": \"US\"
+ }
+ ]
+ }
+ ]
+ },
+ \"aggregateRating\": {
+ \"@type\": \"AggregateRating\",
+ \"ratingValue\": \"4\",
+ \"reviewCount\": \"12\"
+ }
+ }
+}"'
+
+curl - location - request GET 'http://127.0.0.1:8989/contents/71d84cd4-cdbe-4288-ab86-6c58dd742842' \
+ - header 'Authorization: Bearer 'your token here'
